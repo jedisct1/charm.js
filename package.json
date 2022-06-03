@@ -1,0 +1,29 @@
+{
+  "name": "charmjs",
+  "version": "1.0.0",
+  "description": "Charm port to JavaScript",
+  "main": "dist/main.js",
+  "types": "dist/main.d.ts",
+  "typings": "dist/main.d.ts",
+  "scripts": {
+    "tsc": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jedisct1/charmjs"
+  },
+  "keywords": [
+    "typescript",
+    "library",
+    "cryptography"
+  ],
+  "author": "Frank Denis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jedisct1/charmjs/issues"
+  },
+  "homepage": "https://github.com/jedisct1/charmjs",
+  "devDependencies": {
+    "typescript": "^4.7.2"
+  }
+}
