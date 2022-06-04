@@ -115,7 +115,7 @@ class Xoodoo {
 
     permute(): void {
         function rot(x: number, n: number): number {
-            return (x << n) | (x >>> (32 - n));
+            return (x >>> n) | (x << (32 - n));
         }
 
         const st = this.state;
@@ -147,7 +147,7 @@ class Xoodoo {
     }
 
     squeezePermute(): Uint8Array {
-        const rate = this.stateBytes.subarray(0, 16);
+        const rate = this.stateBytes.slice(0, 16);
         this.permute();
         return rate;
     }
