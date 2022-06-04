@@ -120,7 +120,7 @@ class Xoodoo {
 
         const st = this.state;
         const e = new Uint32Array(4);
-        const ROUND_CONSTANTS = new Uint8Array([0x058, 0x038, 0x3c0, 0x0d0, 0x120, 0x014, 0x060, 0x02c, 0x380, 0x0f0, 0x1a0, 0x012]);
+        const ROUND_CONSTANTS = new Uint16Array([0x058, 0x038, 0x3c0, 0x0d0, 0x120, 0x014, 0x060, 0x02c, 0x380, 0x0f0, 0x1a0, 0x012]);
         for (let r = 0; r < 12; r++) {
             for (let i = 0; i < 4; i++) {
                 e[i] = rot(st[i] ^ st[i + 4] ^ st[i + 8], 18);
