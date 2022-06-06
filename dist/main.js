@@ -4,7 +4,7 @@ exports.Charm = void 0;
 class Charm {
     constructor(key, nonce) {
         const bytes = new Uint8Array(48);
-        if (nonce !== null) {
+        if (nonce != null) {
             bytes.set(new Uint8Array(nonce));
         }
         bytes.set(new Uint8Array(key), 16);

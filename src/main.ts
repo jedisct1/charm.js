@@ -8,8 +8,8 @@ export class Charm {
 
     constructor(key: Uint8Array, nonce?: Uint8Array) {
         const bytes = new Uint8Array(48);
-        if (nonce !== null) {
-            bytes.set(new Uint8Array(nonce!));
+        if (nonce != null) {
+            bytes.set(new Uint8Array(nonce));
         }
         bytes.set(new Uint8Array(key), 16);
         this.x = new Xoodoo(bytes);
