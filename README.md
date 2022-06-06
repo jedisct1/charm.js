@@ -12,3 +12,8 @@ This is a port to JavaScript (TypeScript). It is fully compatible with the C and
 ## Security guarantees
 
 128-bit security, no practical limits on the size and length of messages.
+
+## Other implementations:
+
+- [charm](https://github.com/jedisct1/charm) original implementation in C.
+- [zig-charm](https://github.com/jedisct1/zig-charm) an implementation of Charm in the Zig language.
