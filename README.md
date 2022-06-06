@@ -22,7 +22,7 @@ crypto.getRandomValues(key);
 let st = new Charm(key);
 ```
 
-The key size is `Charm.key_length` bytes long, and the nonce size `Charm.nonce_length` bytes long.
+The key size is `Charm.key_length` bytes long, and the nonce size `Charm.nonce_length` bytes long. The nonce can be provided as a second parameter of the constructor.
 
 Once initialized, the state can be used for any encryption/decryption/hashing sequence. Every output depends on the previous input, hence authenticating the entire session.
 
@@ -35,6 +35,8 @@ const tag1 = st.encrypt(x1);
 const x2 = new Uint8Array([5, 6, 7]);
 const tag2 = st.encrypt(x2);
 ```
+
+The `encrypt()` function encrypts a message in-place, and returns the authentication tag.
 
 ### Decryption
 
