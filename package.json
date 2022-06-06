@@ -1,6 +1,6 @@
 {
   "name": "@jedisct1/charm",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Charm port to JavaScript",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jedisct1/charmjs"
+    "url": "git+https://github.com/jedisct1/charm.js"
   },
   "keywords": [
     "typescript",
@@ -20,9 +20,9 @@
   "author": "Frank Denis",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jedisct1/charmjs/issues"
+    "url": "https://github.com/jedisct1/charm.js/issues"
   },
-  "homepage": "https://github.com/jedisct1/charmjs",
+  "homepage": "https://github.com/jedisct1/charm.js",
   "devDependencies": {
     "typescript": "^4.7.2"
   }
