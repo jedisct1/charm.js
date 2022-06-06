@@ -1,6 +1,6 @@
 {
   "name": "@jedisct1/charm",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Charm port to JavaScript",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
