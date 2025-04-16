@@ -1,23 +1,35 @@
 {
   "compilerOptions": {
-    "outDir": "dist",
+    "outDir": "dist/cjs",
     "strict": true,
     "allowJs": false,
     "pretty": true,
     "resolveJsonModule": true,
-    "sourceMap": false,
+    "sourceMap": true,
     "skipLibCheck": false,
     "rootDir": "src",
     "declaration": true,
     "baseUrl": ".",
-    "target": "es2015",
-    "module": "commonjs",
+    "target": "ES2020",
+    "module": "CommonJS",
+    "moduleResolution": "node",
     "noImplicitAny": true,
     "removeComments": false,
     "allowUnreachableCode": false,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "lib": [
+      "ES2020",
+      "DOM"
+    ]
   },
   "compileOnSave": true,
   "include": [
     "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.test.ts"
   ]
 }

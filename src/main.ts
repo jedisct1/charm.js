@@ -34,7 +34,7 @@ export class Charm {
             this.x.permute();
         }
         const leftover = msg.length - off;
-        let padded = new Uint8Array(16 + 1);
+        const padded = new Uint8Array(16 + 1);
         padded.set(msg.subarray(off));
         padded[leftover] = 0x80;
         squeezed.set(bytes.subarray(0, 16));
@@ -58,7 +58,7 @@ export class Charm {
             this.x.permute();
         }
         const leftover = msg.length - off;
-        let padded = new Uint8Array(16 + 1);
+        const padded = new Uint8Array(16 + 1);
         padded.set(msg.subarray(off));
         squeezed.fill(0);
         squeezed.set(bytes.subarray(0, leftover));
@@ -86,7 +86,7 @@ export class Charm {
             this.x.permute();
         }
         const leftover = msg.length - off;
-        let padded = new Uint8Array(16 + 1);
+        const padded = new Uint8Array(16 + 1);
         padded.set(msg.subarray(off));
         padded[leftover] = 0x80;
         Charm.xor128(bytes.subarray(0, 16), padded);

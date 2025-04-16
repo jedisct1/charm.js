@@ -1,0 +1,34 @@
+{
+    "compilerOptions": {
+        "outDir": "dist/cjs",
+        "strict": true,
+        "allowJs": false,
+        "pretty": true,
+        "resolveJsonModule": true,
+        "sourceMap": true,
+        "skipLibCheck": false,
+        "rootDir": "src",
+        "declaration": true,
+        "baseUrl": ".",
+        "target": "ES2020",
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
+        "noImplicitAny": true,
+        "removeComments": false,
+        "allowUnreachableCode": false,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "lib": [
+            "ES2020",
+            "DOM"
+        ]
+    },
+    "include": [
+        "src"
+    ],
+    "exclude": [
+        "node_modules",
+        "dist",
+        "**/*.test.ts"
+    ]
+}

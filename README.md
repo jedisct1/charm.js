@@ -7,61 +7,140 @@ In this mode, each authentication tag authenticates the whole transcript since t
 
 This is a port to JavaScript (TypeScript). It is fully compatible with the C and Zig versions.
 
+## Features
+
+- Authenticated encryption with 128-bit security
+- Keyed hashing
+- No practical limits on message size and length
+- Works in both Node.js and Bun environments
+- Supports both ESM and CommonJS module systems
+- Full TypeScript support with type definitions
+- Zero dependencies
+- Comprehensive test coverage
+
+## Installation
+
+```bash
+npm install @jedisct1/charm
+```
+
 ## Usage
 
-### Initialization
-
-A state must be initialize using a key, and an optional nonce. The nonce is not required is a key is used only once per session.
+### ESM
 
 ```js
 import { Charm } from "@jedisct1/charm";
-import crypto from "crypto";
 
-const key = new Uint8Array(Charm.key_length);
-crypto.getRandomValues(key);
-let st = new Charm(key);
+// Create a key and nonce
+const key = new Uint8Array(Charm.key_length).fill(1);
+const nonce = new Uint8Array(Charm.nonce_length).fill(2);
+
+// Create a message
+const message = new TextEncoder().encode('Hello from Charm!');
+
+// Initialize the state
+const charm = new Charm(key, nonce);
+
+// Encrypt
+const tag = charm.encrypt(message);
+
+// Decrypt
+const charm2 = new Charm(key, nonce);
+charm2.decrypt(message, tag);
+
+// Hash
+const hash = charm.hash(message);
 ```
 
-The key size is `Charm.key_length` bytes long, and the nonce size `Charm.nonce_length` bytes long. The nonce can be provided as a second parameter of the constructor.
-
-Once initialized, the state can be used for any encryption/decryption/hashing sequence. Every output depends on the previous input, hence authenticating the entire session.
-
-### Encryption
+### CommonJS
 
 ```js
-const x1 = new Uint8Array([0, 1, 2, 3, 4]);
-const tag1 = st.encrypt(x1);
+const { Charm } = require("@jedisct1/charm");
 
-const x2 = new Uint8Array([5, 6, 7]);
-const tag2 = st.encrypt(x2);
+// Create a key and nonce
+const key = new Uint8Array(Charm.key_length).fill(1);
+const nonce = new Uint8Array(Charm.nonce_length).fill(2);
+
+// Create a message
+const message = new TextEncoder().encode('Hello from Charm!');
+
+// Initialize the state
+const charm = new Charm(key, nonce);
+
+// Encrypt
+const tag = charm.encrypt(message);
+
+// Decrypt
+const charm2 = new Charm(key, nonce);
+charm2.decrypt(message, tag);
+
+// Hash
+const hash = charm.hash(message);
 ```
 
-The `encrypt()` function encrypts a message in-place, and returns the authentication tag.
+## API
 
-### Decryption
+### Constructor
 
-Decryption must happen within the same state as encryption:
-
-```js
-st = new Charm(key);
-st.decrypt(x1, tag1);
-st.decrypt(x2, tag2);
+```typescript
+new Charm(key: Uint8Array, nonce?: Uint8Array)
 ```
 
-An exception is thrown if the tag doesn't verify.
+- `key`: A `Uint8Array` of length `Charm.key_length` (32 bytes)
+- `nonce`: An optional `Uint8Array` of length `Charm.nonce_length` (16 bytes)
 
-### Hashing
+### Static Properties
 
-```js
-const x3 = new Uint8Array([8, 9, 10, 11, 12, 13, 14, 15])
-const h = st.hash(x3);
+- `Charm.key_length`: 32 (bytes)
+- `Charm.nonce_length`: 16 (bytes)
+- `Charm.tag_length`: 16 (bytes)
+- `Charm.hash_length`: 32 (bytes)
+
+### Methods
+
+#### `encrypt(msg: Uint8Array): Uint8Array`
+
+Encrypts a message in-place and returns the authentication tag.
+
+#### `decrypt(msg: Uint8Array, expected_tag: Uint8Array): void`
+
+Decrypts a message in-place and verifies the authentication tag. Throws an error if verification fails.
+
+#### `hash(msg: Uint8Array): Uint8Array`
+
+Computes a keyed hash of the message.
+
+## Development
+
+### Building
+
+```bash
+npm run build
 ```
 
-## Security guarantees
+This will build both ESM and CommonJS versions of the library.
 
-128-bit security, no practical limits on the size and length of messages.
+### Testing
 
-## Other implementations:
+```bash
+npm test
+```
 
-- [charm](https://github.com/jedisct1/charm) original implementation in C.
-- [zig-charm](https://github.com/jedisct1/zig-charm) an implementation of Charm in the Zig language.
+### Linting
+
+```bash
+npm run lint
+```
+
+## Security
+
+This implementation provides 128-bit security and has no practical limits on the size and length of messages.
+
+## Other implementations
+
+- [charm](https://github.com/jedisct1/charm) original implementation in C
+- [zig-charm](https://github.com/jedisct1/zig-charm) an implementation of Charm in the Zig language
+
+## License
+
+MIT
