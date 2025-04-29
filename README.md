@@ -140,6 +140,7 @@ This implementation provides 128-bit security and has no practical limits on the
 
 - [charm](https://github.com/jedisct1/charm) original implementation in C
 - [zig-charm](https://github.com/jedisct1/zig-charm) an implementation of Charm in the Zig language
+- [go-charm](https://github.com/x13a/go-charm) an implementation of Charm in the Go language
 
 ## License
 
